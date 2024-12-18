@@ -1,3 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using AssetInventory;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -6,6 +11,20 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private CharacterController controller;
     [SerializeField] private float playerSpeed = 3f;
+    [SerializeField, ReadOnly] private List<Transform> closestInteractables = new List<Transform>();
+    [SerializeField, ReadOnly] private Transform closestInteractable;
+
+    public Transform ClosestInteractable
+    {
+        get => closestInteractable;
+        set
+        {
+            closestInteractable = value;
+            Debug.Log($"Closest interactable: {closestInteractable.name}");
+            ShowClosestInteractable();
+        }
+    }
+
 
     void Update()
     {
@@ -41,10 +60,70 @@ public class Player : MonoBehaviour
         {
             _moveDir = Vector3.zero;
         }
+
+        DetermineClosestInteractable();
     }
 
     private void FixedUpdate()
     {
         controller.Move(_moveDir * playerSpeed * Time.deltaTime);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log($"{other.name} entered trigger");
+        if (other.CompareTag("Interactable"))
+        {
+            closestInteractables.Add(other.gameObject.transform);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        Debug.Log($"{other.name} exited trigger");
+        if (other.CompareTag("Interactable"))
+        {
+            other.GetComponent<IInteractable>().WorldSpaceUI.SetActive(false);
+            closestInteractables.Remove(other.gameObject.transform);
+        }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        Debug.Log($"{other.gameObject.name} collided with player");
+    }
+
+    private void DetermineClosestInteractable()
+    {
+        if (closestInteractables.Count == 0)
+        {
+            closestInteractable = null;
+            return;
+        }
+
+        float closestDistance = Mathf.Infinity;
+        Transform closest = null;
+
+        foreach (var interactable in closestInteractables)
+        {
+            float distance = Vector3.Distance(transform.position, interactable.position);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closest = interactable;
+            }
+        }
+
+        ClosestInteractable = closest;
+    }
+
+    private void ShowClosestInteractable()
+    {
+        if (ClosestInteractable == null)
+            return;
+
+        ClosestInteractable.GetComponent<IInteractable>().WorldSpaceUI.SetActive(true);
+        closestInteractables.Where(interactable => interactable != closestInteractable)
+            .ForEach(interactable => interactable.GetComponent<IInteractable>().WorldSpaceUI.SetActive(false));
     }
 }
