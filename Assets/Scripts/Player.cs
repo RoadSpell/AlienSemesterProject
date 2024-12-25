@@ -5,7 +5,7 @@ using AssetInventory;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : SerializedMonoBehaviour
 {
     private Vector3 _moveDir = Vector3.zero;
     [SerializeField] private Transform cameraTransform;
@@ -13,6 +13,13 @@ public class Player : MonoBehaviour
     [SerializeField] private float playerSpeed = 3f;
     [SerializeField, ReadOnly] private List<Transform> closestInteractables = new List<Transform>();
     [SerializeField, ReadOnly] private Transform closestInteractable;
+
+    public Dictionary<ItemType, int> inventory = new Dictionary<ItemType, int>
+    {
+        { ItemType.Carbon, 0 },
+        { ItemType.Hydrogen, 0 },
+        { ItemType.Oxygen, 0 }
+    };
 
     public Transform ClosestInteractable
     {
@@ -126,4 +133,21 @@ public class Player : MonoBehaviour
         closestInteractables.Where(interactable => interactable != closestInteractable)
             .ForEach(interactable => interactable.GetComponent<IInteractable>().WorldSpaceUI.SetActive(false));
     }
+
+    public void PickUpItem(ItemType itemType)
+    {
+        if (inventory.ContainsKey(itemType))
+            inventory[itemType]++;
+        else
+        {
+            inventory.Add(itemType, 1);
+        }
+    }
+}
+
+public enum ItemType
+{
+    Carbon,
+    Hydrogen,
+    Oxygen
 }

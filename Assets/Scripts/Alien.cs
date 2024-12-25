@@ -2,7 +2,7 @@ using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class Alien : SerializedMonoBehaviour, IInteractable
+public class Alien : MonoBehaviour, IInteractable
 {
     protected const float HAPPINESS_LIMIT = 100f;
     protected const float HAPPY_THRESHOLD = 80f;
