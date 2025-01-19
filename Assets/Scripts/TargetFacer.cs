@@ -14,5 +14,7 @@ public class TargetFacer : MonoBehaviour
     void Update()
     {
         transform.LookAt(target);
+        //Vector3 lookedTransform = transform.rotation.eulerAngles;
+        transform.Rotate(new Vector3(0f, 180f, 0f));
     }
 }

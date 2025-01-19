@@ -1274,6 +1274,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1666823086197064037, guid: 23bdf4457d0196143a410fe8e49a1efd, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 330585546}
     - target: {fileID: 3071676209560193356, guid: 23bdf4457d0196143a410fe8e49a1efd, type: 3}
       propertyPath: m_Name
       value: AlienOxygen
@@ -1282,6 +1286,10 @@ PrefabInstance:
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 4711973179072447808, guid: 23bdf4457d0196143a410fe8e49a1efd, type: 3}
+    - target: {fileID: 4822825742385370131, guid: 23bdf4457d0196143a410fe8e49a1efd, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 330585545}
     - target: {fileID: 5870973447888802332, guid: 23bdf4457d0196143a410fe8e49a1efd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.32

@@ -1,6 +1,7 @@
 using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Alien : MonoBehaviour, IInteractable
 {
@@ -16,7 +17,22 @@ public class Alien : MonoBehaviour, IInteractable
     [SerializeField] GameObject poopPrefab;
     [SerializeField, ReadOnly] protected bool boosted = false;
     [SerializeField, ReadOnly] protected Mood mood = Mood.Happy;
+    [SerializeField] private Image happinessBar;
     [field: SerializeField] public GameObject WorldSpaceUI { get; set; }
+
+    public float Happiness
+    {
+        get => happiness;
+        protected set
+        {
+            // Clamp happiness between 0 and 100
+            happiness = (value >= 0) ? value : 0;
+            happiness = (value <= 100) ? value : 100;
+
+            DetermineHappinessState();
+            happinessBar.fillAmount = happiness / 100f;
+        }
+    }
 
 
     private void Start()
@@ -45,23 +61,18 @@ public class Alien : MonoBehaviour, IInteractable
         }
     }
 
+    // Ran every second
     protected void DecreaseHappiness()
     {
-        if (happiness == 0)
-            return;
-
-        happiness -= happinessDecreaseRate;
-        if (happiness <= 0)
-            happiness = 0;
-
-        DetermineHappinessState();
+        Happiness -= happinessDecreaseRate;
     }
 
+    // Ran only when Happiness changed
     private void DetermineHappinessState()
     {
-        if (happiness >= HAPPY_THRESHOLD)
+        if (Happiness >= HAPPY_THRESHOLD)
             mood = Mood.Happy;
-        else if (happiness <= SAD_THRESHOLD)
+        else if (Happiness <= SAD_THRESHOLD)
             mood = Mood.Sad;
         else
             mood = Mood.Bored;
@@ -69,7 +80,7 @@ public class Alien : MonoBehaviour, IInteractable
 
     public void GetFed()
     {
-        happiness = HAPPINESS_LIMIT;
+        Happiness = HAPPINESS_LIMIT;
     }
 
     protected enum Mood
