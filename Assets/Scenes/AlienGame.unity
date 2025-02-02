@@ -1599,7 +1599,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8664135663850788343, guid: 0c9ba20988b03624fbc9e03e9077f09e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8664135663850788343, guid: 0c9ba20988b03624fbc9e03e9077f09e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2333,13 +2333,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: AlienCarbon
       objectReference: {fileID: 0}
+    - target: {fileID: 2535377660697657556, guid: f2d91db4e87f3b04487425dd58a718c3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3209088701007113604, guid: f2d91db4e87f3b04487425dd58a718c3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 3209088701007113604, guid: f2d91db4e87f3b04487425dd58a718c3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3209088701007113604, guid: f2d91db4e87f3b04487425dd58a718c3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2423,7 +2427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 565690712429531190, guid: a9d1ffc84998f2448aa05a89fd8c1136, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 565690712429531190, guid: a9d1ffc84998f2448aa05a89fd8c1136, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2461,6 +2465,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AlienHydrogen
       objectReference: {fileID: 0}
+    - target: {fileID: 611993754512817510, guid: a9d1ffc84998f2448aa05a89fd8c1136, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2482,7 +2490,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2105483981
 Transform:
   m_ObjectHideFlags: 0

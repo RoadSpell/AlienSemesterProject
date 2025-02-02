@@ -453,6 +453,8 @@ GameObject:
   - component: {fileID: 2790512862203359880}
   - component: {fileID: 7934367217983775801}
   - component: {fileID: 6189894454220242280}
+  - component: {fileID: 3100089124930982111}
+  - component: {fileID: 2343153608208120159}
   m_Layer: 0
   m_Name: AlienLogic
   m_TagString: Interactable
@@ -536,7 +538,45 @@ MonoBehaviour:
   poopTimer: 0
   poopPrefab: {fileID: 5643898570798010213, guid: 2ebb939d3ff66574fa7ec9b0c858f282, type: 3}
   mood: 1
+  currentState: 1
+  wandererComponent: {fileID: 3100089124930982111}
+  stayIdleComponent: {fileID: 2343153608208120159}
   <WorldSpaceUI>k__BackingField: {fileID: 9060522386214268858}
+--- !u!114 &3100089124930982111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8378456978736953664}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd606438951c8744c8bde5e68326186a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alien: {fileID: 6189894454220242280}
+  wanderPointRandomizationAmountMin: 2
+  wanderPointRandomizationAmountMax: 5
+  wanderPointErrorMargin: 0.1
+  rb: {fileID: 6905363505845615359}
+  speed: 1
+  stayIdleComponent: {fileID: 2343153608208120159}
+--- !u!114 &2343153608208120159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8378456978736953664}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d659d6950182ca94c94e3a85f961155c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alien: {fileID: 6189894454220242280}
+  wandererComponent: {fileID: 3100089124930982111}
+  standingIdleRandomMin: 3
+  standingIdleRandomMax: 5
 --- !u!1 &9013128816008847435
 GameObject:
   m_ObjectHideFlags: 0
