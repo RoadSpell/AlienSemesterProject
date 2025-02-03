@@ -10,9 +10,9 @@ public class Wanderer : MonoBehaviour
     private Vector3 _targetWanderPoint;
     [SerializeField, Min(0)] private float wanderPointRandomizationAmountMin;
     [SerializeField, Min(2)] private float wanderPointRandomizationAmountMax;
-    [SerializeField, Min(0f)] private float wanderPointErrorMargin;
-    [SerializeField] private Rigidbody rb;
-    [SerializeField] private float speed;
+    [Min(0f)] public float wanderPointErrorMargin;
+    public Rigidbody rb;
+    public float speed;
     [SerializeField] private StayIdle stayIdleComponent;
     private RaycastHit _hit;
 
@@ -59,12 +59,12 @@ public class Wanderer : MonoBehaviour
 
         if (Physics.Raycast(ray, out _hit, pointToAdd.magnitude))
         {
-            Debug.LogError("Wander point is not acceptable!");
+            //Debug.LogError("Wander point is not acceptable!");
             SetRandomWanderPoint();
         }
         else
         {
-            Debug.Log("Found acceptable wander point");
+            //Debug.Log("Found acceptable wander point");
             _targetWanderPoint += pointToAdd;
         }
     }

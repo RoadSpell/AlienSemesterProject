@@ -34,7 +34,7 @@ public class PlayerLegacy : SerializedMonoBehaviour
         set
         {
             closestInteractable = value;
-            Debug.Log($"Closest interactable: {closestInteractable.name}");
+            //Debug.Log($"Closest interactable: {closestInteractable.name}");
             ShowClosestInteractable();
         }
     }
@@ -69,6 +69,7 @@ public class PlayerLegacy : SerializedMonoBehaviour
             _moveDir = forward * Input.GetAxis("Vertical") + right * Input.GetAxis("Horizontal");
             // Face the direction of movement
             transform.forward = _moveDir;
+
         }
         else
         {
@@ -85,7 +86,7 @@ public class PlayerLegacy : SerializedMonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"{other.name} entered trigger");
+        //Debug.Log($"{other.name} entered trigger");
         if (other.CompareTag("Interactable"))
         {
             closestInteractables.Add(other.gameObject.transform);
@@ -94,7 +95,7 @@ public class PlayerLegacy : SerializedMonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log($"{other.name} exited trigger");
+        //Debug.Log($"{other.name} exited trigger");
         if (other.CompareTag("Interactable"))
         {
             other.GetComponent<IInteractable>().WorldSpaceUI.SetActive(false);
@@ -104,7 +105,7 @@ public class PlayerLegacy : SerializedMonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        Debug.Log($"{other.gameObject.name} collided with player");
+        //Debug.Log($"{other.gameObject.name} collided with player");
     }
 
     private void DetermineClosestInteractable()

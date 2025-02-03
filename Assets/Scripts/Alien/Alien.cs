@@ -17,7 +17,10 @@ public class Alien : MonoBehaviour, IInteractable
     [SerializeField, ReadOnly] protected float poopTimer = 0f;
     [SerializeField] GameObject poopPrefab;
     [SerializeField, ReadOnly] protected Mood mood = Mood.Happy;
+    [SerializeField] protected bool justSpawned = true;
+
     public List<Action> methods = new List<Action>() { };
+
     /*private Vector3 _targetWanderPoint;
     [SerializeField, Min(0)] private float wanderPointRandomizationAmountMin;
     [SerializeField, Min(2)] private float wanderPointRandomizationAmountMax;
@@ -29,8 +32,9 @@ public class Alien : MonoBehaviour, IInteractable
     [SerializeField, Min(0)] private float standingIdleRandomMax;
     protected Coroutine idleRoutine = null;*/
     public State currentState = State.Idle;
-    [SerializeField] private Wanderer wandererComponent;
-    [SerializeField] private StayIdle stayIdleComponent;
+    public Wanderer wandererComponent;
+    public StayIdle stayIdleComponent;
+    public BehaviourSOBase currentBehaviour = null;
 
 
     public float Happiness
@@ -47,10 +51,26 @@ public class Alien : MonoBehaviour, IInteractable
         }
     }
 
+    /*private void OnEnable()
+    {
+        AlienMischiefManager.Instance.aliens.AddLast(this);
+    }*/
+
+    private void OnDisable()
+    {
+        AlienMischiefManager.Instance.aliens.Remove(this);
+    }
+
+    private void OnDestroy()
+    {
+        AlienMischiefManager.Instance.aliens.Remove(this);
+    }
+
     private void Start()
     {
         //SetRandomWanderPoint();
         wandererComponent.enabled = true;
+        AlienMischiefManager.Instance.aliens.AddLast(this);
         InvokeRepeating(nameof(DecreaseHappiness), 0f, 1f);
     }
 
@@ -60,12 +80,22 @@ public class Alien : MonoBehaviour, IInteractable
         // Change to state machine
         if (mood != Mood.Sad)
             HandlePoopingAndTimer();
+
+        /*if (currentBehaviour != null)
+        {
+            currentBehaviour.Execute(this);
+        }*/
     }
 
     /*private void FixedUpdate()
     {
         Wander();
     }*/
+
+    public void Mischief()
+    {
+        Debug.Log($"I, {transform.parent.gameObject.name} am going to misbehave!");
+    }
 
     [field: SerializeField] public GameObject WorldSpaceUI { get; set; }
 
