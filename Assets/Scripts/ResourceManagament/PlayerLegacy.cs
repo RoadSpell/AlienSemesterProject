@@ -69,7 +69,6 @@ public class PlayerLegacy : SerializedMonoBehaviour
             _moveDir = forward * Input.GetAxis("Vertical") + right * Input.GetAxis("Horizontal");
             // Face the direction of movement
             transform.forward = _moveDir;
-
         }
         else
         {
@@ -87,7 +86,7 @@ public class PlayerLegacy : SerializedMonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Debug.Log($"{other.name} entered trigger");
-        if (other.CompareTag("Interactable"))
+        if (other.CompareTag("Interactable") && other.TryGetComponent(out IInteractable interactable))
         {
             closestInteractables.Add(other.gameObject.transform);
         }
@@ -96,9 +95,9 @@ public class PlayerLegacy : SerializedMonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         //Debug.Log($"{other.name} exited trigger");
-        if (other.CompareTag("Interactable"))
+        if (other.CompareTag("Interactable") && other.TryGetComponent(out IInteractable interactable))
         {
-            other.GetComponent<IInteractable>().WorldSpaceUI.SetActive(false);
+            interactable.WorldSpaceUI.SetActive(false);
             closestInteractables.Remove(other.gameObject.transform);
         }
     }

@@ -26,6 +26,9 @@ public class AlienMischiefManager : MonoBehaviour
 
     private void Mischief()
     {
+        if (aliens.Count == 0)
+            return;
+
         LinkedListNode<Alien> targetAlienNode = aliens.First;
         Alien targetAlien = targetAlienNode.Value;
         aliens.RemoveFirst();

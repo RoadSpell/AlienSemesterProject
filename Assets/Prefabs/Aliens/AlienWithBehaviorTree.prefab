@@ -88,8 +88,10 @@ GameObject:
   - component: {fileID: 2647896378846103688}
   - component: {fileID: 6832524304124162697}
   - component: {fileID: 6905363505845615359}
+  - component: {fileID: 9153294185777657015}
+  - component: {fileID: 8263286893796828467}
   m_Layer: 0
-  m_Name: Alien
+  m_Name: AlienWithBehaviorTree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103,8 +105,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1034518678257778840}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3, y: 1, z: -11}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -214,6 +216,56 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 1
+--- !u!195 &9153294185777657015
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034518678257778840}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &8263286893796828467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034518678257778840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Graph: {fileID: -5567039417169552847, guid: bd99d2c7e8d72d849af487c63871914f, type: 2}
+  m_BlackboardVariableOverridesList:
+  - rid: 1397811412599832804
+  m_IsInitialised: 0
+  m_IsStarted: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 1397811412599832804
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1
+          m_Value1: 0
+        Name: Self
+        m_Value: {fileID: 1034518678257778840}
 --- !u!1 &2908493117971399955
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,9 +504,6 @@ GameObject:
   - component: {fileID: 6202366919599487909}
   - component: {fileID: 2790512862203359880}
   - component: {fileID: 7934367217983775801}
-  - component: {fileID: 6189894454220242280}
-  - component: {fileID: 3100089124930982111}
-  - component: {fileID: 2343153608208120159}
   m_Layer: 0
   m_Name: AlienLogic
   m_TagString: Interactable
@@ -520,65 +569,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 4
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6189894454220242280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8378456978736953664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 872a86055dcb56b4d8b4dd159761305a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  happiness: 100
-  happinessDecreaseRate: 0.55
-  poopInterval: 10
-  poopTimer: 0
-  poopPrefab: {fileID: 5643898570798010213, guid: 2ebb939d3ff66574fa7ec9b0c858f282, type: 3}
-  mood: 1
-  justSpawned: 1
-  currentState: 1
-  wandererComponent: {fileID: 3100089124930982111}
-  stayIdleComponent: {fileID: 2343153608208120159}
-  currentBehaviour: {fileID: 0}
-  <WorldSpaceUI>k__BackingField: {fileID: 9060522386214268858}
---- !u!114 &3100089124930982111
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8378456978736953664}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd606438951c8744c8bde5e68326186a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alien: {fileID: 6189894454220242280}
-  wanderPointRandomizationAmountMin: 2
-  wanderPointRandomizationAmountMax: 5
-  wanderPointErrorMargin: 0.1
-  rb: {fileID: 6905363505845615359}
-  speed: 1
-  stayIdleComponent: {fileID: 2343153608208120159}
---- !u!114 &2343153608208120159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8378456978736953664}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d659d6950182ca94c94e3a85f961155c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alien: {fileID: 6189894454220242280}
-  wandererComponent: {fileID: 3100089124930982111}
-  standingIdleRandomMin: 3
-  standingIdleRandomMax: 5
 --- !u!1 &9013128816008847435
 GameObject:
   m_ObjectHideFlags: 0
