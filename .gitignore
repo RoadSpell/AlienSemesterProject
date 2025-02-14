@@ -73,3 +73,6 @@ crashlytics-build.properties
 
 # Feel plugin
 /[Aa]ssets/[Ff]eel
+
+# 3D Models
+/[Aa]ssets/[Mm]odels
