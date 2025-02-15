@@ -98,6 +98,10 @@ public class Alien : MonoBehaviour, IInteractable
     }
 
     [field: SerializeField] public GameObject WorldSpaceUI { get; set; }
+    public void Interact()
+    {
+        throw new NotImplementedException();
+    }
 
     protected void HandlePoopingAndTimer()
     {

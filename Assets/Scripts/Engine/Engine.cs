@@ -1,9 +1,11 @@
+using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
 
 public class Engine : SerializedMonoBehaviour, IInteractable, IInventoryHolder
 {
+    [SerializeField] private Inventory playerInventory;
     [SerializeField] private long consumptionPerSec;
     //[OdinSerialize] private Inventory inventory;
 
@@ -31,5 +33,16 @@ public class Engine : SerializedMonoBehaviour, IInteractable, IInventoryHolder
     }
 
     [field: SerializeField] public GameObject WorldSpaceUI { get; set; }
+
+    public void Interact()
+    {
+        Dictionary<ItemType, long> playerInventoryDic = new Dictionary<ItemType, long>(playerInventory.resources);
+
+        foreach (var kvp in playerInventoryDic)
+        {
+            OwnInventory.AddItem(kvp.Key, kvp.Value);
+        }
+    }
+
     [field: OdinSerialize] public Inventory OwnInventory { get; set; }
 }
