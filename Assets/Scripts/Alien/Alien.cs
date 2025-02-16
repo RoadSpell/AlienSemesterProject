@@ -98,7 +98,7 @@ public class Alien : MonoBehaviour, IInteractable
     }
 
     [field: SerializeField] public GameObject WorldSpaceUI { get; set; }
-    public void Interact()
+    public void GetInteracted()
     {
         throw new NotImplementedException();
     }

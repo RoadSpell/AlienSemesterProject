@@ -4,5 +4,5 @@ public interface IInteractable
 {
     public GameObject WorldSpaceUI { get; set; }
 
-    public void Interact();
+    public void GetInteracted();
 }

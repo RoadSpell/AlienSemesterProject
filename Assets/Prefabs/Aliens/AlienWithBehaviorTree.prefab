@@ -253,6 +253,7 @@ MonoBehaviour:
   m_Graph: {fileID: -5567039417169552847, guid: bd99d2c7e8d72d849af487c63871914f, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 1397811412599832804
+  - rid: 1397811691629576216
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -266,6 +267,14 @@ MonoBehaviour:
           m_Value1: 0
         Name: Self
         m_Value: {fileID: 1034518678257778840}
+    - rid: 1397811691629576216
+      type: {class: 'BlackboardVariable`1[[AlienInteractable, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 2392500918342715438
+          m_Value1: 14139863710650615700
+        Name: AlienInteractable
+        m_Value: {fileID: 6087491721749339043}
 --- !u!1 &1245053218535232931
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,14 +300,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1245053218535232931}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4898899182151097174}
   m_Father: {fileID: 273829382775151344}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 2}
@@ -810,6 +819,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <WorldSpaceUI>k__BackingField: {fileID: 9060522386214268858}
+  happinessBar: {fileID: 0}
+  onFedEvent: {fileID: 0}
+  Happiness: 0
 --- !u!1 &9013128816008847435
 GameObject:
   m_ObjectHideFlags: 0

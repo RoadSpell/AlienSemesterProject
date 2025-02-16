@@ -752,7 +752,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: inventory
+    - Name: OwnInventory
       Entry: 7
       Data: 0|Inventory, Assembly-CSharp
     - Name: resources
@@ -774,7 +774,43 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
       Data: 0
+    - Name: $v
+      Entry: 3
+      Data: 200
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 3
+      Data: 200
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 3
+      Data: 200
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 13
       Data: 
@@ -1203,12 +1239,16 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 531205477}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
+    - Name: playerInventory
+      Entry: 10
+      Data: 0
     - Name: <OwnInventory>k__BackingField
       Entry: 7
       Data: 0|Inventory, Assembly-CSharp
@@ -1630,6 +1670,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 531205476}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &796473499 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3433208737245737540, guid: 1e5148059055bf9479905532f9971c12, type: 3}
+  m_PrefabInstance: {fileID: 1318145063}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &818520836
 GameObject:
   m_ObjectHideFlags: 0
@@ -2109,6 +2160,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1505709181}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1113388696 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6087491721749339043, guid: 1e5148059055bf9479905532f9971c12, type: 3}
+  m_PrefabInstance: {fileID: 1318145063}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0300bc62b67fda648a6fa3cd81734da3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1181214029
 GameObject:
   m_ObjectHideFlags: 0
@@ -2728,10 +2790,97 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6087491721749339043, guid: 1e5148059055bf9479905532f9971c12, type: 3}
+      propertyPath: onFedEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 88b59715826da0f4b8e8a20b721dda3a, type: 2}
+    - target: {fileID: 6087491721749339043, guid: 1e5148059055bf9479905532f9971c12, type: 3}
+      propertyPath: happinessBar
+      value: 
+      objectReference: {fileID: 796473499}
+    - target: {fileID: 6087491721749339043, guid: 1e5148059055bf9479905532f9971c12, type: 3}
+      propertyPath: blackboardReference.m_Source
+      value: 
+      objectReference: {fileID: -2511504085937623330, guid: bd99d2c7e8d72d849af487c63871914f, type: 2}
     - target: {fileID: 7476829078516453459, guid: 1e5148059055bf9479905532f9971c12, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 330585545}
+    - target: {fileID: 8263286893796828467, guid: 1e5148059055bf9479905532f9971c12, type: 3}
+      propertyPath: 'managedReferences[1397811683690283160]'
+      value: 'Unity.Behavior Unity.Behavior.BlackboardVariable`1[[UnityEngine.GameObject,
+        UnityEngine.CoreModule]]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263286893796828467, guid: 1e5148059055bf9479905532f9971c12, type: 3}
+      propertyPath: 'managedReferences[1397811690353460064]'
+      value: 'Unity.Behavior Unity.Behavior.BlackboardVariable`1[[AlienInteractable,
+        Assembly-CSharp]]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263286893796828467, guid: 1e5148059055bf9479905532f9971c12, type: 3}
+      propertyPath: 'managedReferences[1397811691629576217]'
+      value: 'Unity.Behavior Unity.Behavior.BlackboardVariable`1[[AlienInteractable,
+        Assembly-CSharp]]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263286893796828467, guid: 1e5148059055bf9479905532f9971c12, type: 3}
+      propertyPath: managedReferences[1397811683690283160].Name
+      value: Poop
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263286893796828467, guid: 1e5148059055bf9479905532f9971c12, type: 3}
+      propertyPath: managedReferences[1397811690353460064].Name
+      value: AlienInteractable
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263286893796828467, guid: 1e5148059055bf9479905532f9971c12, type: 3}
+      propertyPath: managedReferences[1397811691629576217].Name
+      value: AlienInteractable
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263286893796828467, guid: 1e5148059055bf9479905532f9971c12, type: 3}
+      propertyPath: m_BlackboardVariableOverridesList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263286893796828467, guid: 1e5148059055bf9479905532f9971c12, type: 3}
+      propertyPath: managedReferences[1397811683690283160].m_Value
+      value: 
+      objectReference: {fileID: 5643898570798010213, guid: 2ebb939d3ff66574fa7ec9b0c858f282, type: 3}
+    - target: {fileID: 8263286893796828467, guid: 1e5148059055bf9479905532f9971c12, type: 3}
+      propertyPath: managedReferences[1397811690353460064].m_Value
+      value: 
+      objectReference: {fileID: 1113388696}
+    - target: {fileID: 8263286893796828467, guid: 1e5148059055bf9479905532f9971c12, type: 3}
+      propertyPath: managedReferences[1397811691629576217].m_Value
+      value: 
+      objectReference: {fileID: 1113388696}
+    - target: {fileID: 8263286893796828467, guid: 1e5148059055bf9479905532f9971c12, type: 3}
+      propertyPath: 'm_BlackboardVariableOverridesList.Array.data[1]'
+      value: 1397811683690283160
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263286893796828467, guid: 1e5148059055bf9479905532f9971c12, type: 3}
+      propertyPath: 'm_BlackboardVariableOverridesList.Array.data[2]'
+      value: 1397811691629576217
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263286893796828467, guid: 1e5148059055bf9479905532f9971c12, type: 3}
+      propertyPath: managedReferences[1397811683690283160].GUID.m_Value0
+      value: 6265561831836162358
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263286893796828467, guid: 1e5148059055bf9479905532f9971c12, type: 3}
+      propertyPath: managedReferences[1397811683690283160].GUID.m_Value1
+      value: 18223857406941150256
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263286893796828467, guid: 1e5148059055bf9479905532f9971c12, type: 3}
+      propertyPath: managedReferences[1397811690353460064].GUID.m_Value0
+      value: 14786685920507249545
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263286893796828467, guid: 1e5148059055bf9479905532f9971c12, type: 3}
+      propertyPath: managedReferences[1397811690353460064].GUID.m_Value1
+      value: 3547931343465221200
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263286893796828467, guid: 1e5148059055bf9479905532f9971c12, type: 3}
+      propertyPath: managedReferences[1397811691629576217].GUID.m_Value0
+      value: 2392500918342715438
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263286893796828467, guid: 1e5148059055bf9479905532f9971c12, type: 3}
+      propertyPath: managedReferences[1397811691629576217].GUID.m_Value1
+      value: 14139863710650615700
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

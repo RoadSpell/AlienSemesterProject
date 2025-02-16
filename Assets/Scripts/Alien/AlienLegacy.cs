@@ -19,7 +19,7 @@ public class AlienLegacy : MonoBehaviour, IInteractable
     [SerializeField, ReadOnly] protected Mood mood = Mood.Happy;
     [SerializeField] private Image happinessBar;
     [field: SerializeField] public GameObject WorldSpaceUI { get; set; }
-    public void Interact()
+    public void GetInteracted()
     {
         throw new NotImplementedException();
     }

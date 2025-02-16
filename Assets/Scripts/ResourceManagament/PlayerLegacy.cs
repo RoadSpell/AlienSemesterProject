@@ -6,9 +6,11 @@ using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
 
-public class PlayerLegacy : SerializedMonoBehaviour
+public class PlayerLegacy : SerializedMonoBehaviour, IInventoryHolder
 {
     private Vector3 _moveDir = Vector3.zero;
+
+    //[SerializeField] private OnFedEvent onFedEvent;
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private CharacterController controller;
     [SerializeField] private float playerSpeed = 3f;
@@ -19,7 +21,7 @@ public class PlayerLegacy : SerializedMonoBehaviour
     [SerializeField, Unity.Collections.ReadOnly]
     private Transform closestInteractable;
 
-    [OdinSerialize] private Inventory inventory;
+    [OdinSerialize] public Inventory OwnInventory { get; set; }
 
     /*public Dictionary<ItemType, int> Inventory = new Dictionary<ItemType, int>
     {
@@ -144,11 +146,10 @@ public class PlayerLegacy : SerializedMonoBehaviour
 
     public void PickUpItem(ItemType itemType, long amount = 1)
     {
-        inventory.AddItem(itemType, amount);
+        OwnInventory.AddItem(itemType, amount);
     }
 
     private void ApplyCustomGravity()
     {
-
     }
 }

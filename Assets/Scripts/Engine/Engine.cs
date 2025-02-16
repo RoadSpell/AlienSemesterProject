@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Engine : SerializedMonoBehaviour, IInteractable, IInventoryHolder
 {
-    [SerializeField] private Inventory playerInventory;
+    [OdinSerialize] private IInventoryHolder playerInventory;
     [SerializeField] private long consumptionPerSec;
     //[OdinSerialize] private Inventory inventory;
 
@@ -18,6 +18,8 @@ public class Engine : SerializedMonoBehaviour, IInteractable, IInventoryHolder
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.E) && WorldSpaceUI.activeSelf)
+            GetInteracted();
     }
 
     private void ConsumeResources()
@@ -34,14 +36,22 @@ public class Engine : SerializedMonoBehaviour, IInteractable, IInventoryHolder
 
     [field: SerializeField] public GameObject WorldSpaceUI { get; set; }
 
-    public void Interact()
+    public void GetInteracted()
     {
-        Dictionary<ItemType, long> playerInventoryDic = new Dictionary<ItemType, long>(playerInventory.resources);
+        Debug.Log("Interacting with the engine");
+        Dictionary<ItemType, long> playerInventoryDicCopy =
+            new Dictionary<ItemType, long>(playerInventory.OwnInventory.resources);
 
-        foreach (var kvp in playerInventoryDic)
+        foreach (var kvp in playerInventoryDicCopy)
         {
             OwnInventory.AddItem(kvp.Key, kvp.Value);
         }
+
+        playerInventory.OwnInventory.resources = new Dictionary<ItemType, long>()
+        {
+            { ItemType.Carbon, 0 }, { ItemType.Hydrogen, 0 },
+            { ItemType.Oxygen, 0 }
+        };
     }
 
     [field: OdinSerialize] public Inventory OwnInventory { get; set; }
