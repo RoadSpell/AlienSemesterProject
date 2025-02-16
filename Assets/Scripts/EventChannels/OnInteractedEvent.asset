@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b622110231b60648a440d87eb386d38, type: 3}
-  m_Name: OnFedEvent
+  m_Name: OnInteractedEvent
   m_EditorClassIdentifier: 

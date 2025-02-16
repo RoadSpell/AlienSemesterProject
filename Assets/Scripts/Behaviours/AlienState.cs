@@ -7,5 +7,6 @@ public enum AlienState
     Idle,
     Wandering,
     Angry,
+    Fighting,
     Energized
 }

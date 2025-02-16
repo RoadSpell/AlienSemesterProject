@@ -1,13 +1,14 @@
 using System;
 using Unity.Behavior;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class AlienInteractable : MonoBehaviour, IInteractable
 {
     [field: SerializeField] public GameObject WorldSpaceUI { get; set; }
     [SerializeField] private Image happinessBar;
-    [SerializeField] private OnFedEvent onFedEvent;
+    [FormerlySerializedAs("onFedEvent")] [SerializeField] private OnInteractedEvent onInteractedEvent;
     public float Happiness;
 
     private void Update()
@@ -19,7 +20,7 @@ public class AlienInteractable : MonoBehaviour, IInteractable
     public void GetInteracted()
     {
         //Debug.Log($"{transform.parent.name} got fed!");
-        onFedEvent?.SendEventMessage(transform.parent.gameObject);
+        onInteractedEvent?.SendEventMessage(transform.parent.gameObject);
     }
 
     public void AdjustHappinessUIBar()

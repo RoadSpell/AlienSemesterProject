@@ -7,8 +7,8 @@ using Unity.Properties;
 [CreateAssetMenu(menuName = "Behavior/Event Channels/OnFed Event")]
 #endif
 [Serializable, GeneratePropertyBag]
-[EventChannelDescription(name: "OnFed Event", message: "[Agent] got fed", category: "Events", id: "ac7636d59309962b6cb685b07b6703b7")]
-public partial class OnFedEvent : EventChannelBase
+[EventChannelDescription(name: "OnInteracted Event", message: "[Agent] got interacted with", category: "Events", id: "ac7636d59309962b6cb685b07b6703b7")]
+public partial class OnInteractedEvent : EventChannelBase
 {
     public delegate void OnFedEventEventHandler(GameObject Agent);
     public event OnFedEventEventHandler Event; 
