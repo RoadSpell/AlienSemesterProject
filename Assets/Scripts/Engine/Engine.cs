@@ -2,16 +2,22 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Engine : SerializedMonoBehaviour, IInteractable, IInventoryHolder
 {
     [OdinSerialize] private IInventoryHolder playerInventory;
-    [SerializeField] private long consumptionPerSec;
+    [SerializeField] private long baseConsumptionPerSec;
+    [SerializeField] private bool inOverDriveMode = false;
+    public long OverDriveConsumptionPerSec => baseConsumptionPerSec * 2;
+    private long _currentConsumptionPerSec;
+    [SerializeField] private float overdriveRequiredRng;
     //[OdinSerialize] private Inventory inventory;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        _currentConsumptionPerSec = baseConsumptionPerSec;
         InvokeRepeating(nameof(ConsumeResources), 1f, 1f);
     }
 
@@ -24,7 +30,7 @@ public class Engine : SerializedMonoBehaviour, IInteractable, IInventoryHolder
 
     private void ConsumeResources()
     {
-        if (!OwnInventory.ReduceAll(consumptionPerSec))
+        if (!OwnInventory.ReduceAll(_currentConsumptionPerSec))
         {
             NotifyGameOver();
         }
@@ -52,6 +58,27 @@ public class Engine : SerializedMonoBehaviour, IInteractable, IInventoryHolder
             { ItemType.Carbon, 0 }, { ItemType.Hydrogen, 0 },
             { ItemType.Oxygen, 0 }
         };
+    }
+
+    private void RngForOverdriveMode()
+    {
+        float rngResult = Random.Range(0f, 100f);
+
+        if (rngResult <= overdriveRequiredRng)
+        {
+            GoIntoOverDriveMode();
+        }
+    }
+
+    private void GoIntoOverDriveMode()
+    {
+        inOverDriveMode = true;
+        _currentConsumptionPerSec = OverDriveConsumptionPerSec;
+    }
+
+    private void StopOverDriveMode()
+    {
+        inOverDriveMode = false;
     }
 
     [field: OdinSerialize] public Inventory OwnInventory { get; set; }

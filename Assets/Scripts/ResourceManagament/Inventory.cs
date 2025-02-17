@@ -20,6 +20,28 @@ public class Inventory
             resources[itemType] = MAX_RESOURCE_VALUE;
     }
 
+    public void AddItem(Dictionary<ItemType, long> dictionaryToAdd, bool emptyOtherDic = false)
+    {
+        Dictionary<ItemType, long> dicToAddCopy = new Dictionary<ItemType, long>(dictionaryToAdd);
+
+        foreach (var kvp in dicToAddCopy)
+        {
+            if (!resources.TryAdd(kvp.Key, kvp.Value))
+                resources[kvp.Key] += kvp.Value;
+
+            if (resources[kvp.Key] > MAX_RESOURCE_VALUE)
+                resources[kvp.Key] = MAX_RESOURCE_VALUE;
+        }
+
+        if (emptyOtherDic)
+        {
+            foreach (var key in dictionaryToAdd.Keys.ToList())
+            {
+                dictionaryToAdd[key] = 0;
+            }
+        }
+    }
+
     public bool ReduceItem(ItemType itemType, long amount = 1)
     {
         if (resources.TryGetValue(itemType, out long item) && item >= amount)

@@ -24,5 +24,6 @@ public enum ItemType
 {
     Carbon,
     Hydrogen,
-    Oxygen
+    Oxygen,
+    Stardust
 }

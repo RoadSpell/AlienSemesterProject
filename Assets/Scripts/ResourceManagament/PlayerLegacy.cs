@@ -82,8 +82,7 @@ public class PlayerLegacy : SerializedMonoBehaviour, IInventoryHolder
 
     private void FixedUpdate()
     {
-        //controller.Move(_moveDir * playerSpeed * Time.deltaTime);
-        controller.Move(_moveDir * playerSpeed);
+        controller.SimpleMove(_moveDir * playerSpeed);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -147,9 +146,5 @@ public class PlayerLegacy : SerializedMonoBehaviour, IInventoryHolder
     public void PickUpItem(ItemType itemType, long amount = 1)
     {
         OwnInventory.AddItem(itemType, amount);
-    }
-
-    private void ApplyCustomGravity()
-    {
     }
 }

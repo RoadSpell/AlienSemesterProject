@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: Stage0
   m_EditorClassIdentifier: 
   aliens:
-  - {fileID: 2535377660697657556, guid: f2d91db4e87f3b04487425dd58a718c3, type: 3}
-  - {fileID: 611993754512817510, guid: a9d1ffc84998f2448aa05a89fd8c1136, type: 3}
-  - {fileID: 8618395296822032551, guid: 0c9ba20988b03624fbc9e03e9077f09e, type: 3}
-  - {fileID: 2535377660697657556, guid: f2d91db4e87f3b04487425dd58a718c3, type: 3}
-  alienSpawnInterval: 0.25
-  stageInitiationDelay: 1
+  - {fileID: 1613985993052131985, guid: 8897c069369c24540acf398ed8896bce, type: 3}
+  - {fileID: 398708384194199052, guid: ab1ee14748f4d944c97564ff2a384637, type: 3}
+  - {fileID: 792661019663910858, guid: 733b7f8b8721cd8458b5ab07e9bf88d3, type: 3}
+  alienSpawnInterval: 0.5
+  stageInitiationDelay: 20
