@@ -4,7 +4,7 @@ using UnityEngine;
 using Unity.Properties;
 
 #if UNITY_EDITOR
-[CreateAssetMenu(menuName = "Behavior/Event Channels/OnFed Event")]
+[CreateAssetMenu(menuName = "Behavior/Event Channels/OnInteracted Event")]
 #endif
 [Serializable, GeneratePropertyBag]
 [EventChannelDescription(name: "OnInteracted Event", message: "[Agent] got interacted with", category: "Events", id: "ac7636d59309962b6cb685b07b6703b7")]

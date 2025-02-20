@@ -699,7 +699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1886d479e63223e438900aac612decac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetDir: {x: 0, y: 0, z: 0}
+  targetDir: {x: 0, y: 0, z: 1}
 --- !u!1 &8053713250067522701
 GameObject:
   m_ObjectHideFlags: 0
@@ -866,7 +866,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <WorldSpaceUI>k__BackingField: {fileID: 9060522386214268858}
   happinessBar: {fileID: 3433208737245737540}
-  onFedEvent: {fileID: 11400000, guid: 88b59715826da0f4b8e8a20b721dda3a, type: 2}
+  onInteractedEvent: {fileID: 11400000, guid: 88b59715826da0f4b8e8a20b721dda3a, type: 2}
   Happiness: 100
 --- !u!1 &9013128816008847435
 GameObject:

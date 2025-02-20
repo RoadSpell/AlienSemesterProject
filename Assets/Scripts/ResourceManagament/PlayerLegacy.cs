@@ -11,9 +11,26 @@ public class PlayerLegacy : SerializedMonoBehaviour, IInventoryHolder
     private Vector3 _moveDir = Vector3.zero;
 
     //[SerializeField] private OnFedEvent onFedEvent;
+    [SerializeField] private OnPlayerStumbled onPlayerStumbled;
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private CharacterController controller;
     [SerializeField] private float playerSpeed = 3f;
+    [SerializeField] private float getUpTime = 1f;
+
+    [SerializeField] private AudioSource playerAudioSource;
+    [SerializeField] private AudioClip fellDownSfx;
+    private bool _fallenDown = false;
+
+    public bool FallenDown
+    {
+        get => _fallenDown;
+        set
+        {
+            _fallenDown = value;
+            playerAudioSource.PlayOneShot(fellDownSfx);
+        }
+    }
+
 
     [SerializeField, Unity.Collections.ReadOnly]
     private List<Transform> closestInteractables = new List<Transform>();
@@ -41,6 +58,20 @@ public class PlayerLegacy : SerializedMonoBehaviour, IInventoryHolder
         }
     }
 
+    private void Start()
+    {
+        onPlayerStumbled.Event += DoFallDown;
+    }
+
+    private void OnDisable()
+    {
+        onPlayerStumbled.Event -= DoFallDown;
+    }
+
+    private void OnDestroy()
+    {
+        onPlayerStumbled.Event -= DoFallDown;
+    }
 
     void Update()
     {
@@ -56,7 +87,7 @@ public class PlayerLegacy : SerializedMonoBehaviour, IInventoryHolder
         }*/
 
         // RESIDENT EVIL STYLE CAMERA DEPENDENT MOVEMENT
-        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        if ((Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) && !_fallenDown)
         {
             Vector3 forward = cameraTransform.forward;
             Vector3 right = cameraTransform.right;
@@ -146,5 +177,27 @@ public class PlayerLegacy : SerializedMonoBehaviour, IInventoryHolder
     public void PickUpItem(ItemType itemType, long amount = 1)
     {
         OwnInventory.AddItem(itemType, amount);
+    }
+
+    private void DoFallDown(GameObject agent, GameObject target)
+    {
+        if (target != gameObject || _fallenDown)
+        {
+            Debug.Log($"Something stumbled: {target.name}, but not me: {gameObject.name}!");
+            return;
+        }
+
+
+        Debug.Log("I fell down!");
+        _fallenDown = true;
+        if (fellDownSfx != null)
+            playerAudioSource.PlayOneShot(fellDownSfx);
+        Invoke(nameof(GetBackUp), getUpTime);
+    }
+
+    private void GetBackUp()
+    {
+        _fallenDown = false;
+        Debug.Log("I got up!");
     }
 }
