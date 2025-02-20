@@ -15,7 +15,7 @@ public class StardustVacuum : SerializedMonoBehaviour, IInventoryHolder, IIntera
 
     private void Start()
     {
-        InvokeRepeating(nameof(GenerateStardust), 1f, 1f);
+        InvokeRepeating(nameof(GenerateStardust), 0f, 1f);
     }
 
     private void Update()

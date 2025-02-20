@@ -76,3 +76,7 @@ crashlytics-build.properties
 
 # 3D Models
 /[Aa]ssets/[Mm]odels
+
+# Music
+/[Aa]ssets/[Ss]ounds
+/[Aa]ssets/[Ss]ounds.meta
